@@ -24,6 +24,8 @@ use sawtooth_sdk::processor::handler::ApplyError;
 use sawtooth_sdk::processor::handler::TransactionContext;
 use sawtooth_sdk::processor::handler::TransactionHandler;
 
+use crate::SETTINGS_FAMILY_NAME;
+
 const MAX_VALUE: u32 = 4_294_967_295;
 const MAX_NAME_LEN: usize = 20;
 
@@ -244,7 +246,7 @@ impl TriggerTransactionHandler {
     }
 }
 
-impl TransactionHandler for IntkeyTransactionHandler {
+impl TransactionHandler for TriggerTransactionHandler {
     fn family_name(&self) -> String {
         self.family_name.clone()
     }
