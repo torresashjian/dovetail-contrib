@@ -1,18 +1,7 @@
 /*
- * Copyright 2017 Bitwise IO, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * -----------------------------------------------------------------------------
+ * Copyright © 2019. TIBCO Software Inc.
+ * This file is subject to the license terms contained
+ * in the license file that is distributed with this file.
  */
 
 use cbor;
@@ -37,6 +26,7 @@ use sawtooth_sdk::processor::handler::TransactionHandler;
 
 const MAX_VALUE: u32 = 4_294_967_295;
 const MAX_NAME_LEN: usize = 20;
+
 
 #[derive(Copy, Clone)]
 enum Verb {
@@ -238,16 +228,16 @@ impl<'a> IntkeyState<'a> {
     }
 }
 
-pub struct IntkeyTransactionHandler {
+pub struct TriggerTransactionHandler {
     family_name: String,
     family_versions: Vec<String>,
     namespaces: Vec<String>,
 }
 
-impl IntkeyTransactionHandler {
-    pub fn new() -> IntkeyTransactionHandler {
-        IntkeyTransactionHandler {
-            family_name: "intkey".to_string(),
+impl TriggerTransactionHandler {
+    pub fn new() -> TriggerTransactionHandler {
+        TriggerTransactionHandler {
+            family_name: SETTINGS_FAMILY_NAME.to_string(),
             family_versions: vec!["1.0".to_string()],
             namespaces: vec![get_intkey_prefix().to_string()],
         }

@@ -1,20 +1,8 @@
 /*
- * Copyright 2017 Bitwise IO, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * -----------------------------------------------------------------------------
+ * Copyright © 2019. TIBCO Software Inc.
+ * This file is subject to the license terms contained
+ * in the license file that is distributed with this file.
  */
-
 extern crate cbor;
 #[macro_use]
 extern crate clap;
@@ -35,16 +23,16 @@ use std::process;
 
 use sawtooth_sdk::processor::TransactionProcessor;
 
-use handler::IntkeyTransactionHandler;
+use handler::TriggerTransactionHandler;
 
 //Generated code from app.json
 const SETTINGS_VALIDATOR_URL: &str = "tcp://localhost:4004";
-const SETTINGS_COMMAND_NAME: &str = "intkey";
+const SETTINGS_FAMILY_NAME: &str = "intkey";
 
 pub fn start_my_simple_sawtooth_trigger() {
-    let matches = clap_app!(intkey2 =>
+    let matches = clap_app!(myapp =>
         (version: crate_version!())
-        (about: "Intkey2 Transaction Processor (Rust)")
+        (about: "my_simple_sawtooth_trigger Transaction Processor (Rust)")
         (@arg connect: -C --connect +takes_value
          "connection endpoint for validator")
         (@arg verbose: -v --verbose +multiple
@@ -90,7 +78,7 @@ pub fn start_my_simple_sawtooth_trigger() {
         }
     }
 
-    let handler = IntkeyTransactionHandler::new();
+    let handler = TriggerTransactionHandler::new();
     let mut processor = TransactionProcessor::new(endpoint);
 
     info!("Console logging level: {}", console_log_level);
