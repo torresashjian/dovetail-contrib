@@ -281,7 +281,7 @@ impl TransactionHandler for TriggerTransactionHandler {
         let mut state = IntkeyState::new(context);
 
         info!(
-            "payload: {} {} {} {} {}",
+            "the payload: {} {} {} {} {}",
             payload.get_verb(),
             payload.get_name(),
             payload.get_value(),
@@ -289,8 +289,15 @@ impl TransactionHandler for TriggerTransactionHandler {
             request.get_header().get_outputs()[0]
         );
 
+        info!(
+                "getting the verb!!!"
+            );
+
         match payload.get_verb() {
             Verb::Set => {
+                info!(
+                    "calling set verb!!!"
+                );
                 match state.get(payload.get_name()) {
                     Ok(Some(_)) => {
                         return Err(ApplyError::InvalidTransaction(format!(
