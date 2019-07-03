@@ -26,8 +26,8 @@ use sawtooth_sdk::processor::TransactionProcessor;
 use handler::TriggerTransactionHandler;
 
 //Generated code from app.json
-pub const SETTINGS_VALIDATOR_URL: &str = "tcp://localhost:4004";
-pub const SETTINGS_FAMILY_NAME: &str = "intkey";
+pub const settings_validator_url: &str = "tcp://localhost:4004";
+pub const settings_family_name: &str = "intkey";
 
 pub fn start_my_simple_sawtooth_trigger() {
     let matches = clap_app!(myapp =>
@@ -41,7 +41,7 @@ pub fn start_my_simple_sawtooth_trigger() {
 
     let endpoint = matches
         .value_of("connect")
-        .unwrap_or(SETTINGS_VALIDATOR_URL);
+        .unwrap_or(settings_validator_url);
 
     let console_log_level;
     match matches.occurrences_of("verbose") {

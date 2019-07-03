@@ -24,7 +24,7 @@ use sawtooth_sdk::processor::handler::ApplyError;
 use sawtooth_sdk::processor::handler::TransactionContext;
 use sawtooth_sdk::processor::handler::TransactionHandler;
 
-use crate::SETTINGS_FAMILY_NAME;
+use crate::settings_family_name;
 
 const MAX_VALUE: u32 = 4_294_967_295;
 const MAX_NAME_LEN: usize = 20;
@@ -239,7 +239,7 @@ pub struct TriggerTransactionHandler {
 impl TriggerTransactionHandler {
     pub fn new() -> TriggerTransactionHandler {
         TriggerTransactionHandler {
-            family_name: SETTINGS_FAMILY_NAME.to_string(),
+            family_name: settings_family_name.to_string(),
             family_versions: vec!["1.0".to_string()],
             namespaces: vec![get_intkey_prefix().to_string()],
         }
