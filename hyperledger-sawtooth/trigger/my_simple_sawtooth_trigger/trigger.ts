@@ -21,7 +21,7 @@ import * as lodash from "lodash";
 @Injectable()
 @WiContrib({})
 
-export class EthContractTriggerService extends WiServiceHandlerContribution {
+export class SimpleSawtoothTriggerService extends WiServiceHandlerContribution {
     constructor(private injector: Injector, private http: Http, private contribModelService: WiContribModelService) {
         super(injector, http, contribModelService);
     }
